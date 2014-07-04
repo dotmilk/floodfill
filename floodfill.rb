@@ -38,24 +38,15 @@ def flood_fill( field, node, target_number, replacement_number )
         n = q.pop
         if field[n.y-1][n.x-1] != nil && field[n.y-1][n.x-1] == target_number
             field[n.y-1][n.x-1] = replacement_number
-            processed[n.y-1][n.x-1] = -2
-                        # west, east, north, south 
+            processed[n.y-1][n.x-1] = -2 
             to_check = get_four_directions(n)
             for direction in to_check
                 if processed[direction.y-1][direction.x-1] != nil && processed[direction.y-1][direction.x-1] == -1
-                    pp "Accepted"
-                    pp direction
                     q.push(direction)
-                else
-                    # this else and the above pp are just here for educational purposes
-                    pp "Rejected"
-                    pp direction
-                    # pp processed[y2][x2]
                 end
             end
         end
     end
-    processed
 end
 
 def get_four_directions(start)
